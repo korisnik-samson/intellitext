@@ -22,7 +22,8 @@ export default function Home() {
                 <p className="mt-5 max-w-prose text-zinc-700 sm:text-lg">{welcomeParagraph}</p>
 
                 <Link className={buttonVariants({ size: 'lg', className: 'mt-5' })} href='/dashboard' target='_blank'>
-                    Get Started <ArrowRight className='ml-2 h-5 w-5' />
+                    Get Started
+                    <ArrowRight className='ml-2 h-5 w-5' />
                 </Link>
             </MaxWidthWrapper>
 
