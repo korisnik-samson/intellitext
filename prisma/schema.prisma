@@ -20,3 +20,6 @@ model User {
     stripePriceId String? @map(name: "srtipe_price_id")
     stripeCurrentPeriodEnd DateTime? @map(name: "stripe_current_period_end")
 }
+
+// for any changes run:
+// npx prisma db push
