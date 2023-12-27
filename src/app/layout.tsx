@@ -15,13 +15,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <Providers>
-            <html lang="en" >
+        <html lang="en">
+            <Providers>
                 <body className={cn('min-h-screen font-sans antialiased grainy', inter.className)}>
                     <NavBar />
                     {children}
                 </body>
-            </html>
-        </Providers>
+            </Providers>
+        </html>
     )
 }

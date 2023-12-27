@@ -9,7 +9,7 @@ export const appRouter = router ({
         const user = await getUser();
 
         if (!user?.id || !user?.email)
-            throw new TRPCError({ code: 'UNAUTHORIZED' })
+            throw new TRPCError({code: 'UNAUTHORIZED'})
 
         // verify if user exists on database
         const dbUser = await db.user.findFirst({
@@ -26,7 +26,7 @@ export const appRouter = router ({
             })
         }
 
-        return { success: true }
+        return { success: true };
     })
 });
 
