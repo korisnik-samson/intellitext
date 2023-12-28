@@ -14,7 +14,6 @@ datasource db {
 model User {
     id String @id @unique // matches kinde user id
     email String @unique
-
     stripeCustomerId String? @unique @map(name: "stripe_customer_id")
     stripeSubscription String? @unique @map(name: "stripe_subsruption_id")
     stripePriceId String? @map(name: "srtipe_price_id")
