@@ -26,7 +26,7 @@ const Dashboard = () => {
             {files && files?.length !== 0 ? (
                 <ul className="mt-8 grid grid-cols-1 gap-6 divide-y divide-zinc divide-zinc-200 md:grid-cols-2 lg:grid-cols-3">
                     {files.sort((a, b) =>
-                        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+                        (new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
                     ).map((file) => (
                         <li key={file.id} className="col-span-1 divide-y divided-gray-200 rounded-lg bg-white shadow transition
                         hover:shadow-lg">
@@ -36,7 +36,9 @@ const Dashboard = () => {
                                     from-cyan-500 to-blue-500" />
                                     <div className="flex-1 truncate">
                                         <div className="flex items-center space-x-3">
-                                            <h3 className="truncate text-lg font-medium text-zinc-900">{file.name}</h3>
+                                            <h3 className="truncate text-lg font-medium text-zinc-900">
+                                                {file.name}
+                                            </h3>
                                         </div>
                                     </div>
                                 </div>
