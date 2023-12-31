@@ -14,3 +14,7 @@ export interface IPageProps {
 export type ProgressProps = React.ComponentPropsWithoutRef<typeof ProgressPrimitive.Root> & {
     indicatorColor?: string;
 }
+
+export interface PDFRendererProps {
+    url: string;
+}
