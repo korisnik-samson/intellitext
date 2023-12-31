@@ -1,12 +1,12 @@
 import React from 'react'
-import { PageProps } from "@/types";
+import { IPageProps } from "@/types";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { notFound, redirect } from "next/navigation";
 import { db } from "@/db";
 import PDFRenderer from "@/components/PDFRenderer";
 import ChatWrapper from "@/components/ChatWrapper";
 
-const Page = async ({ params }: PageProps) => {
+const Page = async ({ params }: IPageProps) => {
     // retrieve file id
     const { fileid } = params;
     const { getUser } = getKindeServerSession();
