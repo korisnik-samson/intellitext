@@ -34,7 +34,7 @@ const PDFRenderer = ({ url }: PDFRendererProps) => {
         formState: { errors }, setValue } = useForm<TCustomPageValidator>({
         defaultValues: { page: '1' },
         resolver: zodResolver(CustomPageValidator)
-    })
+    });
 
     const { width, ref } = useResizeDetector();
 
