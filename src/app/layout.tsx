@@ -8,8 +8,9 @@ import Providers from "@/components/Providers";
 
 import "react-loading-skeleton/dist/skeleton.css"
 import { Toaster } from "@/components/ui/toaster";
+import { NextFont } from "next/dist/compiled/@next/font";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter: NextFont = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
     title: 'ChatPDF',

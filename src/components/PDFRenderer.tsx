@@ -40,7 +40,7 @@ const PDFRenderer = ({ url }: PDFRendererProps) => {
 
     const handlePageSubmit = ({ page }: TCustomPageValidator) => {
         setCurrPage(Number(page));
-        setValue("page", String(page));
+        setValue('page', String(page));
     }
 
     return (
@@ -48,9 +48,10 @@ const PDFRenderer = ({ url }: PDFRendererProps) => {
             <div className="h-14 w-full border-b border-zinc-200 flex items-center justify-between px-2">
                 <div className="flex items-center gap-1.5">
                     <Button disabled={currPage <= 1} onClick={() => {
-                        setCurrPage((prev) => (prev - 1 > 1 ? prev - 1 : 1))
-                    }} variant="ghost" aria-label='previous page'>
-                        <ChevronDown className="h-4 w-4" />
+                        setCurrPage((prev) => prev - 1 > 1 ? prev - 1 : 1)
+                        setValue('page', String(currPage - 1))
+                    }} variant='ghost' aria-label='previous page'>
+                        <ChevronDown className="h-5 w-5" />
                     </Button>
 
                     <div className="flex items-center gap-1.5">
@@ -65,9 +66,10 @@ const PDFRenderer = ({ url }: PDFRendererProps) => {
                     </div>
 
                     <Button disabled={numPages === undefined || currPage === numPages} onClick={() => {
-                        setCurrPage((prev) => (prev + 1 > numPages! ? numPages! - 1 : prev + 1))
+                        setCurrPage((prev) => (prev + 1 > numPages! ? numPages! : prev + 1))
+                        setValue('page', String(currPage + 1))
                     }} variant="solid" aria-label='next page'>
-                        <ChevronUp className="h-4 w-4" />
+                        <ChevronUp className="h-5 w-5" />
                     </Button>
                 </div>
 
@@ -76,7 +78,7 @@ const PDFRenderer = ({ url }: PDFRendererProps) => {
                         <DropdownMenuTrigger asChild>
                             <Button className="gap-1.5 mr-2" aria-label="zoom" variant="ghost">
                                 <Search className="h-5 w-5 mr-2" />
-                                {scale * 100}% <ChevronDown className="h-3 w-3 opacity-50" />
+                                {scale * 100}% <ChevronDown className="h-5 w-5 opacity-50" />
                             </Button>
                         </DropdownMenuTrigger>
 
