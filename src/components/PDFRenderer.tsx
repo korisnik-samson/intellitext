@@ -2,10 +2,11 @@
 import React, { useState } from 'react'
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Document, Page, pdfjs } from "react-pdf";
-import { PDFRendererProps } from "@/types";
+import { IPDFRendererProps } from "@/types";
 
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
+
 import { ChevronUp, ChevronDown, Loader2, Search } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { useResizeDetector } from "react-resize-detector";
@@ -18,8 +19,9 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`
 
-const PDFRenderer = ({ url }: PDFRendererProps) => {
+const PDFRenderer = ({ url }: IPDFRendererProps) => {
     const { toast } = useToast();
+
     const [numPages, setNumPages] = useState<number>();
     const [currPage, setCurrPage] = useState<number>(1);
     const [scale, setScale] = useState<number>(1)
@@ -28,7 +30,7 @@ const PDFRenderer = ({ url }: PDFRendererProps) => {
         page: z.string().refine((num) => Number(num) > 0 && Number(num) <= numPages!)
     });
 
-    type TCustomPageValidator = z.infer<typeof CustomPageValidator>
+    type TCustomPageValidator = z.infer<typeof CustomPageValidator>;
 
     const { register, handleSubmit,
         formState: { errors }, setValue } = useForm<TCustomPageValidator>({
@@ -36,9 +38,11 @@ const PDFRenderer = ({ url }: PDFRendererProps) => {
         resolver: zodResolver(CustomPageValidator)
     });
 
+    console.log(errors, errors.page);
+
     const { width, ref } = useResizeDetector();
 
-    const handlePageSubmit = ({ page }: TCustomPageValidator) => {
+    const handlePageSubmit = ({ page }: TCustomPageValidator): void => {
         setCurrPage(Number(page));
         setValue('page', String(page));
     }
@@ -76,12 +80,11 @@ const PDFRenderer = ({ url }: PDFRendererProps) => {
                 <div className="space-x-2">
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                            <Button className="gap-1.5 mr-2" aria-label="zoom" variant="ghost">
+                            <Button className='gap-1.5 mr-2' aria-label='zoom' variant='ghost'>
                                 <Search className="h-5 w-5 mr-2" />
-                                {scale * 100}% <ChevronDown className="h-5 w-5 opacity-50" />
+                                {scale * 100}%<ChevronDown className="h-5 w-5 opacity-50" />
                             </Button>
                         </DropdownMenuTrigger>
-
                         <DropdownMenuContent>
                             <DropdownMenuItem onSelect={() => setScale(1)}>
                                 100%

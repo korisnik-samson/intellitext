@@ -15,6 +15,6 @@ export type ProgressProps = React.ComponentPropsWithoutRef<typeof ProgressPrimit
     indicatorColor?: string;
 }
 
-export interface PDFRendererProps {
+export interface IPDFRendererProps {
     url: string;
 }
