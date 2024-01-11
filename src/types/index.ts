@@ -18,3 +18,7 @@ export type ProgressProps = React.ComponentPropsWithoutRef<typeof ProgressPrimit
 export interface IPDFRendererProps {
     url: string;
 }
+
+export interface IPDFFullScreenProps {
+    fileUrl: string;
+}
