@@ -4,7 +4,7 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { notFound, redirect } from "next/navigation";
 import { db } from "@/db";
 import PDFRenderer from "@/components/PDFRenderer";
-import ChatWrapper from "@/components/ChatWrapper";
+import ChatWrapper from "@/components/chat/ChatWrapper";
 
 const Page = async ({ params }: IPageProps) => {
     // retrieve file id
