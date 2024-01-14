@@ -30,3 +30,15 @@ export interface IChatWrapperProps {
 export interface IChatInputProps {
     isDisabled?: boolean;
 }
+
+export type TStreamResponse = {
+    addMessage: () => void,
+    message: string,
+    handleInputChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void,
+    isLoading: boolean,
+}
+
+export interface IChatContextProviderProps {
+    fileId: string;
+    children: ReactNode;
+}
