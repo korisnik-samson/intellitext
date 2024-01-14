@@ -22,3 +22,11 @@ export interface IPDFRendererProps {
 export interface IPDFFullScreenProps {
     fileUrl: string;
 }
+
+export interface IChatWrapperProps {
+    fileId: string;
+}
+
+export interface IChatInputProps {
+    isDisabled?: boolean;
+}
