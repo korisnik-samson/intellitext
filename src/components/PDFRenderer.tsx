@@ -44,7 +44,7 @@ const PDFRenderer = ({ url }: IPDFRendererProps) => {
         resolver: zodResolver(CustomPageValidator)
     });
 
-    console.log(errors, errors.page);
+    //console.log(errors, errors.page);
 
     const { width, ref } = useResizeDetector();
 
@@ -92,6 +92,15 @@ const PDFRenderer = ({ url }: IPDFRendererProps) => {
                             </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent>
+                            <DropdownMenuItem onSelect={() => setScale(0.25)}>
+                                25%
+                            </DropdownMenuItem>
+                            <DropdownMenuItem onSelect={() => setScale(0.5)}>
+                                50%
+                            </DropdownMenuItem>
+                            <DropdownMenuItem onSelect={() => setScale(0.75)}>
+                                75%
+                            </DropdownMenuItem>
                             <DropdownMenuItem onSelect={() => setScale(1)}>
                                 100%
                             </DropdownMenuItem>

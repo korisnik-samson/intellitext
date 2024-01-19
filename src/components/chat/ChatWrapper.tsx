@@ -8,6 +8,7 @@ import { IChatWrapperProps } from "@/types";
 import { ChevronLeft, Loader2, XCircle } from "lucide-react";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
+import { ChatContextProvider } from "@/components/chat/ChatContext";
 
 const ChatWrapper = ({ fileId }: IChatWrapperProps) => {
     const { data, isLoading } = trpc.getFileUploadStatus.useQuery({
@@ -48,7 +49,7 @@ const ChatWrapper = ({ fileId }: IChatWrapperProps) => {
         </div>
     );
 
-    if (data?.status === 'FAILED' || true) return (
+    if (data?.status === 'FAILED') return (
         <div className='relative min-h-full bg-zinc-50 flex divide-y divide-zinc-200 flex-col justify-between gap-2'>
             <div className="flex-1 flex justify-center items-center flex-col mb-28">
                 <div className="flex flex-col items-center gap-2">
@@ -69,13 +70,15 @@ const ChatWrapper = ({ fileId }: IChatWrapperProps) => {
     )
 
     return (
-        <div className='relative min-h-full bg-zinc-50 flex divide-y divide-zinc-200 flex-col justify-between gap-2'>
-            <div className='flex-1 justify-between flex flex-col mb-28'>
-                <Messages/>
-            </div>
+        <ChatContextProvider fileId={fileId}>
+            <div className='relative min-h-full bg-zinc-50 flex divide-y divide-zinc-200 flex-col justify-between gap-2'>
+                <div className='flex-1 justify-between flex flex-col mb-28'>
+                    <Messages fileId={fileId} />
+                </div>
 
-            <ChatInput/>
-        </div>
+                <ChatInput />
+            </div>
+        </ChatContextProvider>
     );
 }
 

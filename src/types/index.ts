@@ -1,6 +1,7 @@
 import React from 'react';
 import { ReactNode } from "react";
 import * as ProgressPrimitive from '@radix-ui/react-progress';
+import { ExtendedMessage } from "@/types/message";
 
 export type MaxWidthWrapperProps = {
     className?: string;
@@ -41,4 +42,13 @@ export type TStreamResponse = {
 export interface IChatContextProviderProps {
     fileId: string;
     children: ReactNode;
+}
+
+export interface IMessagesProps {
+    fileId: string;
+}
+
+export interface IMessageProps {
+    message: ExtendedMessage
+    isNextMessageSamePerson: boolean;
 }

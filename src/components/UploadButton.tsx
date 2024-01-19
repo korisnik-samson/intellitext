@@ -52,13 +52,13 @@ const UploadDropzone = () => {
             const progressInterval = startSimulatedProgress()
 
             // mock waiting...
-            //await new Promise((resolve) => {setTimeout(resolve, 3000)});
+            // await new Promise((resolve) => {setTimeout(resolve, 3000)});
 
             // handle file uploading
             const res = await startUpload(acceptedFile);
 
             if (!res) return toast({
-                title: "Something went wrong",
+                title: "Somethings went wrong",
                 description: "Please try again later",
                 variant: "destructive"
             })
