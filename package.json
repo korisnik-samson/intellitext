@@ -12,6 +12,7 @@
     "dependencies": {
         "@hookform/resolvers": "^3.3.3",
         "@kinde-oss/kinde-auth-nextjs": "^2.0.13",
+        "@mantine/hooks": "^7.4.2",
         "@nextui-org/react": "^2.2.9",
         "@pinecone-database/pinecone": "^2.0.0",
         "@prisma/client": "^5.7.1",
