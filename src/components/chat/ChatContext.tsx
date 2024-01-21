@@ -4,7 +4,6 @@ import { useToast } from "@/components/ui/use-toast";
 import { useMutation } from "@tanstack/react-query";
 import { trpc } from "@/app/_trpc/client";
 import { INFINITE_QUERY_LIMIT } from "@/config/infinite-query";
-import messages from "@/components/chat/Messages";
 
 export const ChatContext = createContext<TStreamResponse>({
     addMessage: () => {},
