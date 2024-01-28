@@ -5,7 +5,6 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import { PLANS } from "@/config/stripe";
 import { pricingItemsList } from "@/constants";
 import { cn } from '@/lib/utils';
-import { quartersInYear } from "date-fns/constants";
 import { ArrowRight, Check, HelpCircle, Minus } from "lucide-react";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
