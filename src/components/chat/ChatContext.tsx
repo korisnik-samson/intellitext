@@ -6,10 +6,8 @@ import { trpc } from "@/app/_trpc/client";
 import { INFINITE_QUERY_LIMIT } from "@/config/infinite-query";
 
 export const ChatContext = createContext<TStreamResponse>({
-    addMessage: () => {},
-    message: '',
-    handleInputChange: () => {},
-    isLoading: false,
+    addMessage: () => {}, message: '',
+    handleInputChange: () => {}, isLoading: false,
 });
 
 export const ChatContextProvider = ({ fileId, children }: IChatContextProviderProps) => {
@@ -19,7 +17,7 @@ export const ChatContextProvider = ({ fileId, children }: IChatContextProviderPr
     const utils = trpc.useContext()
     const { toast } = useToast();
 
-    const backupMessage = useRef('');
+    const backupMessage: React.MutableRefObject<string> = useRef('');
 
     const { mutate: sendMessage } = useMutation({
         mutationFn: async ({ message }: { message: string }) =>{
@@ -108,6 +106,7 @@ export const ChatContextProvider = ({ fileId, children }: IChatContextProviderPr
                         let updatedPages = old.pages.map((page) => {
                             if (page === old.pages[0]) {
                                 let updatedMessages;
+
                                 if (!isAIResponseCreated) {
                                     updatedMessages = [
                                         {
