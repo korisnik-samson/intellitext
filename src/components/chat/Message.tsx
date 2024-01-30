@@ -55,4 +55,7 @@ const Message = forwardRef<HTMLDivElement, IMessageProps>(({ message,
         );
     }
 )
+
+Message.displayName = 'Message'
+
 export default Message;

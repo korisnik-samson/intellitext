@@ -2,6 +2,7 @@ import React from 'react';
 import { ReactNode } from "react";
 import * as ProgressPrimitive from '@radix-ui/react-progress';
 import { ExtendedMessage } from "@/types/message";
+import { getUserSubscriptionPlan } from "@/lib/stripe";
 
 export type MaxWidthWrapperProps = {
     className?: string;
@@ -51,4 +52,8 @@ export interface IMessagesProps {
 export interface IMessageProps {
     message: ExtendedMessage
     isNextMessageSamePerson: boolean;
+}
+
+export interface IBillingFormProps {
+    subscriptionPlan: Awaited<ReturnType<typeof getUserSubscriptionPlan>>
 }

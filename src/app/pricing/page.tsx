@@ -16,7 +16,7 @@ const Page = async () => {
 
     return (
         <React.Fragment>
-            <MaxWidthWrapper className='mb-8 mt-24 text-center max-w-5xl'>
+            <MaxWidthWrapper className='mb-8 mt-24 text-center max-w-[1490px]'>
                 <div className='mx-auto mb-10 sm:max-w-lg'>
                     <h1 className='text-6xl font-bold sm:text-7xl'>Pricing</h1>
                     <p className='mt-5 text-gray-600 sm:text-lg'>
@@ -25,7 +25,7 @@ const Page = async () => {
                     </p>
                 </div>
 
-                <div className="pt-12 grid grid-cols-1 gap-4 lg:grid-cols-2">
+                <div className="pt-12 grid grid-cols-1 gap-4 lg:grid-cols-3">
                     <TooltipProvider>
                         {pricingItemsList.map(({ plan, tagline, quota, features }) => {
                             const price = PLANS.find(
@@ -107,15 +107,15 @@ const Page = async () => {
                                     <div className='p-5'>
                                         {plan === 'Free' ? (
                                             <Link href={user ? '/dashboard' : '/sign-in'} className={buttonVariants({
-                                                className: 'w-full', variant: 'secondary'}
+                                                className: 'w-full', variant: 'secondary' }
                                             )}>
-                                                {user ? 'Upgrade Now' : 'Sign up'}
+                                                {user ? 'Continue' : 'Sign up'}
                                                 <ArrowRight className='h-5 w-5 ml-1.5' />
                                             </Link>
                                         ) : user ? (
                                             <UpgradeButton />
                                         ) : (
-                                            <Link href='/sign-in' className={buttonVariants({className: 'w-full'})}>
+                                            <Link href='/sign-in' className={buttonVariants({ className: 'w-full' })}>
                                                 {user ? 'Upgrade Now' : 'Sign up'}
                                                 <ArrowRight className='h-5 w-5 ml-1.5' />
                                             </Link>
