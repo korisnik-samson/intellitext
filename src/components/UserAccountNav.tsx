@@ -9,7 +9,7 @@ import Image from "next/image";
 import { Icons } from "@/components/Icons";
 import Link from "next/link";
 import { Gem } from "lucide-react";
-import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs";
+import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/server";
 
 const UserAccountNav = async ({ email, imageUrl, name }: IUserAccountNavProps) => {
     const subscriptionPlan = await getUserSubscriptionPlan()
@@ -49,7 +49,7 @@ const UserAccountNav = async ({ email, imageUrl, name }: IUserAccountNavProps) =
                     {subscriptionPlan?.isSubscribed ? (
                         <Link href='/dashboard/billing'>Manage Subscription</Link>
                     ) : (
-                        <Link href='/dashboard/pricing'>
+                        <Link href='/pricing'>
                             Upgrade
                             <Gem className='text-blue-600 h-4 w-4 ml-1.5'/>
                         </Link>
