@@ -8,9 +8,9 @@ import Image from "next/image";
 import UserAccountNav from "@/components/UserAccountNav";
 import MobileNav from "@/components/MobileNav";
 
-const NavBar = async () => {
+const NavBar = () => {
     const { getUser } = getKindeServerSession();
-    const user = await getUser();
+    const user = getUser();
 
     return (
         <nav className="sticky h-14 inset-x-0 top-0 z-30 w-full border-b border-gray-200 bg-white/75
