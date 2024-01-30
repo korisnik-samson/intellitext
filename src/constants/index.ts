@@ -1,6 +1,6 @@
 import { PLANS } from "@/config/stripe";
 
-export const welcomeParagraph: string = 'ChatPDF allows you to have conversations with any PDF document. ' +
+export const welcomeParagraph: string = 'IntelliText allows you to have conversations with any PDF document. ' +
     'Simply upload your file and start asking questions right away'
 
 export const clipPath: string = 'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%,' +

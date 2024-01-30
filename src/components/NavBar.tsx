@@ -4,6 +4,7 @@ import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { LoginLink, RegisterLink } from "@kinde-oss/kinde-auth-nextjs/server";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 const NavBar = () => {
     return (
@@ -12,7 +13,8 @@ const NavBar = () => {
             <MaxWidthWrapper>
                 <div className="flex h-14 items-center justify-between border-b border-zinc-200">
                     <Link href='/' className="flex z-40 font-semibold">
-                        <span>ChatPDF</span>
+                        {/*<span>ChatPDF</span>*/}
+                        <Image  src='/brand/intelli_logo.png' alt='logo' width={140} height={140}/>
                     </Link>
 
                     {/* TODO: Add mobile NavBar */}
