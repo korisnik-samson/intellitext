@@ -57,3 +57,9 @@ export interface IMessageProps {
 export interface IBillingFormProps {
     subscriptionPlan: Awaited<ReturnType<typeof getUserSubscriptionPlan>>
 }
+
+export interface IUserAccountNavProps {
+    email: string | undefined;
+    name: string;
+    imageUrl: string;
+}
