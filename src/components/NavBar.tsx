@@ -6,6 +6,7 @@ import { getKindeServerSession, LoginLink, RegisterLink } from "@kinde-oss/kinde
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import UserAccountNav from "@/components/UserAccountNav";
+import MobileNav from "@/components/MobileNav";
 
 const NavBar = async () => {
     const { getUser } = getKindeServerSession();
@@ -20,7 +21,7 @@ const NavBar = async () => {
                         <Image src='/brand/intelli_logo.png' alt='logo' width={140} height={140}/>
                     </Link>
 
-                    {/* TODO: Add mobile NavBar */}
+                    <MobileNav isAuth={!!user} />
 
                     <div className="hidden items-center space-x-4 sm:flex">
                         {!user ? <React.Fragment>
