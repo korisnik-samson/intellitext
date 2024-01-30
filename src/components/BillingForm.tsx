@@ -35,7 +35,7 @@ const BillingForm = ({ subscriptionPlan }: IBillingFormProps) => {
                     <CardTitle>Subscription Plan</CardTitle>
                     <CardDescription>
                         You are currently on then&nbsp;
-                        <strong>{subscriptionPlan.name} Plan</strong>
+                        <strong>{/*{subscriptionPlan.name}*/}Pro Plan</strong>
                     </CardDescription>
                 </CardHeader>
 
