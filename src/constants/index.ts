@@ -49,7 +49,7 @@ export const pricingItemsList = [
                 negative: false,
             },
             {
-                text: '20MB file size limit',
+                text: '32MB file size limit',
                 footnote: 'The maximum file size of a single PDF file.',
                 negative: false,
             },

@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import * as ProgressPrimitive from '@radix-ui/react-progress';
 import { ExtendedMessage } from "@/types/message";
 import { getUserSubscriptionPlan } from "@/lib/stripe";
+import { middleware } from "@/app/api/uploadthing/core";
 
 export type MaxWidthWrapperProps = {
     className?: string;
@@ -62,4 +63,25 @@ export interface IUserAccountNavProps {
     email: string | undefined;
     name: string;
     imageUrl: string;
+}
+
+export interface IConstructMetadataTypes {
+    title?: string;
+    description?: string;
+    image?: string;
+    icons?: string;
+    noIndex?: boolean;
+}
+
+export interface IOnUploadCompleteProps {
+    metadata: Awaited<ReturnType<typeof middleware>>,
+    file: {
+        key: string,
+        name: string,
+        url: string
+    }
+}
+
+export interface IDashboardProps {
+    subscriptionPlan: Awaited<ReturnType<typeof getUserSubscriptionPlan>>
 }

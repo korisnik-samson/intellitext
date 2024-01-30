@@ -2,7 +2,7 @@ import React from "react";
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import { cn } from "@/lib/utils";
+import { cn, constructMetadata } from "@/lib/utils";
 import NavBar from "@/components/NavBar";
 import Providers from "@/components/Providers";
 
@@ -14,10 +14,7 @@ import { NextFont } from "next/dist/compiled/@next/font";
 
 const inter: NextFont = Inter({ subsets: ['latin'] })
 
-export const metadata: Metadata = {
-    title: 'IntelliText',
-    description: 'An AI Chat Web Application',
-}
+export const metadata: Metadata = constructMetadata()
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (

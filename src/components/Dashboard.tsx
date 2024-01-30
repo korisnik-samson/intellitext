@@ -8,8 +8,9 @@ import Link from "next/link";
 import { format } from "date-fns";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { IDashboardProps } from "@/types";
 
-const Dashboard = () => {
+const Dashboard = ({ subscriptionPlan }: IDashboardProps) => {
     const [currentlyDeletingFile, setCurrentlyDeletingFile] = useState<string | null>(null)
     const utils = trpc.useContext();
     const { data: files, isLoading } = trpc.getUserFiles.useQuery();
@@ -34,7 +35,7 @@ const Dashboard = () => {
                     My Files
                 </h1>
 
-                <UploadButton />
+                <UploadButton isSubscribed={subscriptionPlan.isSubscribed}/>
             </div>
 
             {/* display all user files */}
