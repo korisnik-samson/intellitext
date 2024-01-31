@@ -57,12 +57,12 @@ export const appRouter = router ({
         const stripeSession = await stripe.checkout.sessions.create({
             success_url: billingUrl,
             cancel_url: billingUrl,
-            payment_method_types: ['card', 'paypal'],
+            payment_method_types: ['card'/*, 'paypal'*/],
             mode: 'subscription',
             billing_address_collection: 'auto',
             line_items: [
                 {
-                    price: PLANS.find((plan) => plan.name === 'Pro')?.price.priceIds.test,
+                    price: PLANS.find((plan) => plan.name === 'Pro')?.price.priceIds.production,
                     quantity: 1
                 }
             ],

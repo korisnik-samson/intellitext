@@ -1,5 +1,5 @@
 import React from 'react';
-import { getKindeServerSession, handleAuth } from "@kinde-oss/kinde-auth-nextjs/server";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { redirect } from "next/navigation";
 import { db } from "@/db";
 import Dashboard from "@/components/Dashboard";
@@ -19,9 +19,8 @@ const Page = async () => {
 
     const subscriptionPlan = await getUserSubscriptionPlan()
 
-    return (
-        <Dashboard subscriptionPlan={subscriptionPlan} />
-    );
+    return <Dashboard subscriptionPlan={subscriptionPlan} />
+
 }
 
 export default Page;

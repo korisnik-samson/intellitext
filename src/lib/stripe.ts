@@ -3,7 +3,7 @@ import { db } from '@/db'
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import Stripe from 'stripe'
 
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? '', {
+export const stripe = new Stripe(process.env.STRIPE_LIVE_SECRET_KEY ?? '', {
     apiVersion: '2023-10-16',
     typescript: true,
 })
@@ -40,7 +40,7 @@ export async function getUserSubscriptionPlan() {
         dbUser.stripeCurrentPeriodEnd.getTime() + 86_400_000 > Date.now()
     )
 
-    const plan = isSubscribed ? PLANS.find((plan) => plan.price.priceIds.test === dbUser.stripePriceId) : null
+    const plan = isSubscribed ? PLANS.find((plan) => plan.price.priceIds.production === dbUser.stripePriceId) : null
 
     let isCanceled = false
 

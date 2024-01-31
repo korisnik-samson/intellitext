@@ -1,4 +1,4 @@
-const {isServer} = require('@tanstack/react-query');
+const { isServer } = require('@tanstack/react-query');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {

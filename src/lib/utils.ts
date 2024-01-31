@@ -7,6 +7,7 @@ export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs))
 }
 
+// potential issues with routing
 export function absoluteUrl(path: string) {
     if (typeof window !== 'undefined') return path
     if (process.env.VERCEEL_URL) return `https://${process.env.VERCEEL_URL}${path}`

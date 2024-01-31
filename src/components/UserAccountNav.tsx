@@ -23,10 +23,12 @@ const UserAccountNav = async ({ email, imageUrl, name }: IUserAccountNavProps) =
                             <div className='relative aspect-square h-full w-full'>
                                 <Image fill src={imageUrl} alt='profile_picture' referrerPolicy='no-referrer' />
                             </div>
-                        ) : <AvatarFallback>
-                            <span className='sr-only'>{name}</span>
-                            <Icons.user className='h-4 w-4 text-zinc-900' />
-                        </AvatarFallback>}
+                        ) : (
+                            <AvatarFallback>
+                                <span className='sr-only'>{name}</span>
+                                <Icons.user className='h-4 w-4 text-zinc-900' />
+                            </AvatarFallback>
+                        )}
                     </Avatar>
                 </Button>
             </DropdownMenuTrigger>
@@ -51,7 +53,7 @@ const UserAccountNav = async ({ email, imageUrl, name }: IUserAccountNavProps) =
                     ) : (
                         <Link href='/pricing'>
                             Upgrade
-                            <Gem className='text-blue-600 h-4 w-4 ml-1.5'/>
+                            <Gem className='text-blue-600 h-4 w-4 ml-1.5' />
                         </Link>
                     )}
                 </DropdownMenuItem>
