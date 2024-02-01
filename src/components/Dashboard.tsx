@@ -35,7 +35,7 @@ const Dashboard = ({ subscriptionPlan }: IDashboardProps) => {
                     My Files
                 </h1>
 
-                <UploadButton isSubscribed={subscriptionPlan.isSubscribed}/>
+                <UploadButton isSubscribed={subscriptionPlan.isSubscribed} />
             </div>
 
             {/* display all user files */}
