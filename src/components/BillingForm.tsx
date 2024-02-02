@@ -35,7 +35,8 @@ const BillingForm = ({ subscriptionPlan }: IBillingFormProps) => {
                     <CardTitle>Subscription Plan</CardTitle>
                     <CardDescription>
                         {// @ts-ignore
-                            `You are currently on the&nbsp;<strong>${subscriptionPlan.name} Plan</strong>`}
+                            `You are currently on the&nbsp;<strong>${subscriptionPlan.name} Plan</strong>`
+                        }
                     </CardDescription>
                 </CardHeader>
 
