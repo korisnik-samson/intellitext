@@ -5,7 +5,7 @@ import BillingForm from "@/components/BillingForm";
 const Page = async () => {
     const subscriptionPlan = await getUserSubscriptionPlan()
 
-    return <BillingForm subscriptionPlan={subscriptionPlan} />
+    return <BillingForm subscriptionPlan={subscriptionPlan!} />
 }
 
 export default Page;
