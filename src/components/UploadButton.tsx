@@ -58,8 +58,8 @@ const UploadDropzone = ({ isSubscribed }: { isSubscribed: boolean }) => {
             const res = await startUpload(acceptedFile);
 
             if (!res) return toast({
-                title: "Somethings went wrong",
-                description: "Please try again later",
+                title: "Something went wrong",
+                description: "Your file is too large",
                 variant: "destructive"
             })
 
