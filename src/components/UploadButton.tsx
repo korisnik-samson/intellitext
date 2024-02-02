@@ -51,9 +51,6 @@ const UploadDropzone = ({ isSubscribed }: { isSubscribed: boolean }) => {
             setIsUploading(true)
             const progressInterval = startSimulatedProgress()
 
-            // mock waiting...
-            // await new Promise((resolve) => {setTimeout(resolve, 3000)});
-
             // handle file uploading
             const res = await startUpload(acceptedFile);
 
@@ -68,7 +65,7 @@ const UploadDropzone = ({ isSubscribed }: { isSubscribed: boolean }) => {
 
             if (!key) return toast({
                 title: "Something went wrong",
-                description: "Please try again later",
+                description: "Problem finding your PDF",
                 variant: "destructive"
             })
 
