@@ -78,14 +78,14 @@ const onUploadComplete = async({ metadata, file }: IOnUploadCompleteProps) => {
         });
 
         await db.file.update({
-            data: {uploadStatus: 'SUCCESS'},
-            where: {id: createdFile.id}
+            data: { uploadStatus: 'SUCCESS' },
+            where: { id: createdFile.id }
         })
 
     } catch (err) {
         await db.file.update({
-            data: {uploadStatus: 'FAILED'},
-            where: {id: createdFile.id}
+            data: { uploadStatus: 'FAILED' },
+            where: { id: createdFile.id }
         })
     }
 }
@@ -94,6 +94,7 @@ export const ourFileRouter = {
     freePlanUploader: f({ pdf: { maxFileSize: '4MB' }})
         .middleware(middleware)
         .onUploadComplete(onUploadComplete),
+
     proPlanUploader: f({ pdf: { maxFileSize: '32MB' }})
             .middleware(middleware)
             .onUploadComplete(onUploadComplete),

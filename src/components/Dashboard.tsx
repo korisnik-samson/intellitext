@@ -68,7 +68,7 @@ const Dashboard = ({ subscriptionPlan }: IDashboardProps) => {
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <MessageSquare className="h-4 w-4" />
-                                    Mocked
+                                    Ready
                                 </div>
                                 <Button onClick={() => deleteFile({ id: file.id })}
                                         size="sm" className="w-full" variant="destructive">
@@ -83,7 +83,7 @@ const Dashboard = ({ subscriptionPlan }: IDashboardProps) => {
                     ))}
                 </ul>
             ) : isLoading ? (
-                <Skeleton height={100} className="my-2" count={3}/>
+                <Skeleton height={100} className="my-2" count={3} />
             ) : (
                 <div className="mt-16 flex flex-col items-center gap-2">
                     <Ghost className="h-8 w-8 text-zinc-800" />

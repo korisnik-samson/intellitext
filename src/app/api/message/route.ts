@@ -66,7 +66,7 @@ export const POST = async (req: NextRequest) => {
     // console.log('injecting prompt...')
 
     const response = await openai.chat.completions.create({
-        model: "gpt-3.5-turbo",
+        model: "gpt-3.5-turbo-0125",
         temperature: 0,
         stream: true,
         messages: [
