@@ -60,8 +60,8 @@ const onUploadComplete = async({ metadata, file }: IOnUploadCompleteProps) => {
         // Subscription enforcement
         if ((isSubscribed && isProExceeded) || (!isSubscribed && isFreeExceeded)) {
             await db.file.update({
-                data: {uploadStatus: 'FAILED'},
-                where: {id: createdFile.id}
+                data: { uploadStatus: 'FAILED' },
+                where: { id: createdFile.id }
             })
         }
 
