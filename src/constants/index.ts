@@ -13,28 +13,34 @@ export const pricingItemsList = [
                 text: '5 pages per PDF',
                 footnote: 'The maximum amount of pages per PDF-file.',
                 negative: false,
+                isIntelli: false
             },
             {
                 text: '4MB file size limit',
                 footnote: 'The maximum file size of a single PDF file.',
                 negative: false,
+                isIntelli: false
             },
             {
                 text: 'Mobile-friendly interface',
                 negative: false,
+                isIntelli: false
             },
             {
                 text: 'Higher-quality responses',
                 footnote: 'Better algorithmic responses for enhanced content quality',
                 negative: true,
+                isIntelli: false
             },
             {
                 text: 'Priority support',
                 negative: true,
+                isIntelli: false
             },
             {
                 text: 'GPT-3.5 Model',
                 negative: false,
+                isIntelli: false
             },
         ],
     },
@@ -47,28 +53,34 @@ export const pricingItemsList = [
                 text: '75 pages per PDF',
                 footnote: 'The maximum amount of pages per PDF-file.',
                 negative: false,
+                isIntelli: false
             },
             {
                 text: '32MB file size limit',
                 footnote: 'The maximum file size of a single PDF file.',
                 negative: false,
+                isIntelli: false
             },
             {
                 text: 'Mobile-friendly interface',
                 negative: false,
+                isIntelli: false
             },
             {
                 text: 'Higher-quality responses',
                 footnote: 'Better algorithmic responses for enhanced content quality',
                 negative: false,
+                isIntelli: false
             },
             {
                 text: 'Priority support',
-                negative: false,
+                negative: true,
+                isIntelli: false
             },
             {
                 text: 'GPT-4 Model',
                 negative: false,
+                isIntelli: false
             },
         ],
     },
@@ -81,28 +93,34 @@ export const pricingItemsList = [
                 text: 'Unlimited pages per PDF',
                 footnote: 'The maximum amount of pages per PDF-file.',
                 negative: false,
+                isIntelli: true,
             },
             {
-                text: '200MB file size limit',
+                text: '128MB file size limit',
                 footnote: 'The maximum file size of a single PDF file.',
                 negative: false,
+                isIntelli: true,
             },
             {
                 text: 'Mobile-friendly interface',
                 negative: false,
+                isIntelli: true,
             },
             {
                 text: 'Higher-quality responses',
                 footnote: 'Better algorithmic responses for enhanced content quality',
                 negative: false,
+                isIntelli: true,
             },
             {
                 text: 'Priority support',
                 negative: false,
+                isIntelli: true,
             },
             {
                 text: 'Google Gemini Model',
                 negative: false,
+                isIntelli: true,
             },
         ],
     },

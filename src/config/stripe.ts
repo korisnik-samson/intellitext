@@ -31,7 +31,7 @@ export const PLANS = [
         quota: 'Unlimited',
         pagesPerPDF: 'Unlimited',
         price: {
-            amount: 7.99,
+            amount: 7.49,
             priceIds: {
                 test: 'price_1Oe2S5Cz9pMpobCpwTSsLlcQ',
                 production: 'price_1Oe2oTCz9pMpobCppjn58wS8',

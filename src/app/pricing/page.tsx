@@ -7,7 +7,7 @@ import { pricingItemsList } from "@/constants";
 import { cn } from '@/lib/utils';
 import { ArrowRight, Check, HelpCircle, Minus } from "lucide-react";
 import Link from "next/link";
-import { buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import UpgradeButton from "@/components/UpgradeButton";
 
 const Page = async () => {
@@ -34,11 +34,18 @@ const Page = async () => {
                             return (
                                 <div key={plan} className={cn('relative rounded-2xl bg-white shadow-lg',
                                 {'border-2 border-blue-600 shadow-blue-200': plan === 'Pro',
-                                'border border-gray-200': plan !== 'Pro'})}>
+                                    'border-2 border-green-600 shadow-green-200': plan === 'Intelli',
+                                    'border border-gray-200': plan !== 'Pro' && plan !== 'Intelli',  })}>
                                     {plan === 'Pro' && (
                                         <div className='absolute -top-5 left-0 right-0 mx-auto w-32 rounded-full bg-gradient-to-r
                                         from-blue-600 to-cyan-600 px-3 py-2 text-sm font-medium text-white'>
                                             Upgrade now
+                                        </div>
+                                    )}
+                                    {plan === 'Intelli' && (
+                                        <div className='absolute -top-5 left-0 right-0 mx-auto w-32 rounded-full bg-gradient-to-r
+                                        from-green-800 to-green-600 px-3 py-2 text-sm font-medium text-white'>
+                                            Coming Soon
                                         </div>
                                     )}
 
@@ -68,19 +75,31 @@ const Page = async () => {
                                     </div>
 
                                     <ul className='my-10 space-y-5 px-8'>
-                                        {features.map(({ text, footnote, negative }) => (
+                                        {features.map(({ text, footnote, negative , isIntelli}) => (
                                             <li key={text} className='flex space-x-5'>
                                                 <div className='flex-shrink-0'>
-                                                    {negative ? (
+                                                    {isIntelli ? (
+                                                        <div className='flex-shrink-0'>
+                                                        {negative ? (
+                                                            <Check className='h-6 w-6 text-gray-300'/>
+                                                        ) : (
+                                                            <Check className='h-6 w-6 text-green-500'/>
+                                                        )}
+                                                    </div> ) : (
+                                                        <div className='flex-shrink-0'>
+                                                        {negative ? (
                                                         <Minus className='h-6 w-6 text-gray-300' />
-                                                    ) : (
+                                                        ) : (
                                                         <Check className='h-6 w-6 text-blue-500' />
-                                                    )}
+                                                        )}
+                                                    </div>)
+                                                }
                                                 </div>
                                                 {footnote ? (
                                                     <div className='flex items-center space-x-1'>
                                                         <p className={cn('text-gray-400', {
-                                                            'text-gray-600': negative
+                                                            'text-gray-600': negative,
+
                                                         })}>
                                                             {text}
                                                         </p>
@@ -95,8 +114,8 @@ const Page = async () => {
                                                     </div>
                                                 ) : (
                                                     <p className={cn('text-gray-400', {
-                                                            'text-gray-600': negative
-                                                        })}>
+                                                        'text-gray-600': negative,
+                                                    })}>
                                                         {text}
                                                     </p>
                                                 )}
@@ -114,8 +133,15 @@ const Page = async () => {
                                             </Link>
                                         ) : user ? (
                                             <UpgradeButton />
-                                        ) : (
-                                            <Link href='/sign-in' className={buttonVariants({ className: 'w-full' })}>
+                                        ) :  plan === 'Intelli' ? (
+                                            /* TODO: Adjust Link function here when Intelli plan is ready */
+                                            <Button variant='ghost' aria-label='fullscreen' className='w-full'>
+                                                {'Coming Soon'}
+                                            </Button>
+                                            ) : (
+                                            <Link href='/sign-in' className={buttonVariants({
+                                                className: 'w-full' }
+                                            )}>
                                                 {user ? 'Upgrade Now' : 'Sign up'}
                                                 <ArrowRight className='h-5 w-5 ml-1.5' />
                                             </Link>
