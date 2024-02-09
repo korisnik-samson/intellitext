@@ -135,7 +135,7 @@ const Page = async () => {
                                             <UpgradeButton />
                                         ) :  plan === 'Intelli' ? (
                                             /* TODO: Adjust Link function here when Intelli plan is ready */
-                                            <Button variant='ghost' aria-label='fullscreen' className='w-full'>
+                                            <Button variant='tertiary' aria-label='fullscreen' className='w-full'>
                                                 {'Coming Soon'}
                                             </Button>
                                             ) : (
