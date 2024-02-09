@@ -15,7 +15,7 @@ export const middleware = async() => {
     const {getUser} = getKindeServerSession();
     const user = await getUser();
 
-    if (!user || !user.id) throw new Error("Unauthorized");
+    if (!user || !user.id) throw new Error('Unauthorized');
 
     // subscription enforcement
     const subscriptionPlan = await getUserSubscriptionPlan()
@@ -48,8 +48,8 @@ const onUploadComplete = async({ metadata, file }: IOnUploadCompleteProps) => {
         const pageLevelDocs = await loader.load()
         const pagesAmt = pageLevelDocs.length
 
-        const {subscriptionPlan} = metadata
-        const {isSubscribed} = subscriptionPlan
+        const { subscriptionPlan } = metadata
+        const { isSubscribed } = subscriptionPlan
 
         // check if pro plan is exceeded
         // @ts-ignore

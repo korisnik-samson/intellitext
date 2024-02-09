@@ -8,8 +8,6 @@ import { Progress } from "@/components/ui/progress";
 import { useUploadThing } from "@/lib/uploadthing";
 import { useToast } from "@/components/ui/use-toast";
 import { trpc } from "@/app/_trpc/client";
-import { useRouter } from "next/navigation";
-
 const UploadDropzone = ({ isSubscribed }: { isSubscribed: boolean }) => {
     const router = useRouter();
 
@@ -45,7 +43,7 @@ const UploadDropzone = ({ isSubscribed }: { isSubscribed: boolean }) => {
 
         return interval;
     }
-    
+
     return (
         <Dropzone multiple={false} onDrop={async (acceptedFile) => {
             setIsUploading(true)
@@ -57,7 +55,7 @@ const UploadDropzone = ({ isSubscribed }: { isSubscribed: boolean }) => {
             if (!res) return toast({
                 title: "Something went wrong",
                 description: "Your file is too large",
-                variant: "destructive"
+                variant: "default"
             })
 
             const [fileResponse] = res;
@@ -123,6 +121,8 @@ const UploadDropzone = ({ isSubscribed }: { isSubscribed: boolean }) => {
         </Dropzone>
     )
 }
+
+import { useRouter } from "next/navigation";
 
 const UploadButton = ({ isSubscribed }: { isSubscribed: boolean }) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);

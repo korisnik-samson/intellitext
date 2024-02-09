@@ -32,6 +32,10 @@ export const pricingItemsList = [
                 text: 'Priority support',
                 negative: true,
             },
+            {
+                text: 'GPT-3.5 Model',
+                negative: false,
+            },
         ],
     },
     {
@@ -62,6 +66,10 @@ export const pricingItemsList = [
                 text: 'Priority support',
                 negative: false,
             },
+            {
+                text: 'GPT-4 Model',
+                negative: false,
+            },
         ],
     },
     {
@@ -90,6 +98,10 @@ export const pricingItemsList = [
             },
             {
                 text: 'Priority support',
+                negative: false,
+            },
+            {
+                text: 'Google Gemini Model',
                 negative: false,
             },
         ],

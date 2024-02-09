@@ -28,6 +28,7 @@ export interface IPDFFullScreenProps {
 
 export interface IChatWrapperProps {
     fileId: string;
+    isSubscribed: boolean;
 }
 
 export interface IChatInputProps {

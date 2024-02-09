@@ -9,11 +9,11 @@ import { ChevronLeft, Loader2, XCircle } from "lucide-react";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { ChatContextProvider } from "@/components/chat/ChatContext";
+import { PLANS } from "@/config/stripe";
 
-const ChatWrapper = ({ fileId }: IChatWrapperProps) => {
-    const { data, isLoading } = trpc.getFileUploadStatus.useQuery({
-        fileId
-    }, { refetchInterval: (data) =>
+const ChatWrapper = ({ fileId, isSubscribed }: IChatWrapperProps) => {
+    const { data, isLoading } = trpc.getFileUploadStatus.useQuery({ fileId }, {
+        refetchInterval: (data) =>
             data?.status === 'SUCCESS' || data?.status === 'FAILED' ? false : 500
     })
 
@@ -56,7 +56,12 @@ const ChatWrapper = ({ fileId }: IChatWrapperProps) => {
                     <XCircle className='h-8 w-8 text-red-500' />
                     <h3 className='font-semibold text-xl'>Too many pages in your PDF</h3>
                     <p className='text-zinc-500 text-sm'>
-                        Your <span className='font-medium'>Free</span>&nbsp;plan supports up to 5 pages per PDF.
+                        Your <span className='font-medium'>Free</span>&nbsp;plan supports up to{' '}
+                        {
+                            isSubscribed ? PLANS.find((p) => p.name === 'Pro')?.pagesPerPDF
+                            : PLANS.find((p) => p.name === 'Free')?.pagesPerPDF
+                        }{' '}
+                        pages per PDF.
                     </p>
                     <Link href='/dashboard' className={buttonVariants({ variant: 'secondary', className: 'mt-4' })}>
                         <ChevronLeft className='h-3 w-3 mr-1.5' />
