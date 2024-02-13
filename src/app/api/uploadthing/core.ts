@@ -20,7 +20,7 @@ export const middleware = async() => {
     // subscription enforcement
     const subscriptionPlan = await getUserSubscriptionPlan()
 
-    return {subscriptionPlan, userId: user.id};
+    return { subscriptionPlan, userId: user.id };
 }
 
 const onUploadComplete = async({ metadata, file }: IOnUploadCompleteProps) => {

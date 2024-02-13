@@ -8,6 +8,8 @@ import { Progress } from "@/components/ui/progress";
 import { useUploadThing } from "@/lib/uploadthing";
 import { useToast } from "@/components/ui/use-toast";
 import { trpc } from "@/app/_trpc/client";
+import { useRouter } from "next/navigation";
+
 const UploadDropzone = ({ isSubscribed }: { isSubscribed: boolean }) => {
     const router = useRouter();
 
@@ -121,8 +123,6 @@ const UploadDropzone = ({ isSubscribed }: { isSubscribed: boolean }) => {
         </Dropzone>
     )
 }
-
-import { useRouter } from "next/navigation";
 
 const UploadButton = ({ isSubscribed }: { isSubscribed: boolean }) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);

@@ -6,7 +6,8 @@ import { OpenAIEmbeddings } from "@langchain/openai";
 import { pinecone } from "@/lib/pinecone";
 import { PineconeStore } from "@langchain/community/vectorstores/pinecone";
 import { openai } from "@/lib/openai";
-import { OpenAIStream, StreamingTextResponse } from "ai";
+import { genAI } from "@/lib/gemini"
+import { OpenAIStream, GoogleGenerativeAIStream, StreamingTextResponse } from "ai";
 
 export const POST = async (req: NextRequest) => {
     // endpoint for asking a question to a pdf file
@@ -42,7 +43,7 @@ export const POST = async (req: NextRequest) => {
         openAIApiKey: process.env.OPENAI_API_TEST_KEY
     });
 
-    const pineconeIndex = pinecone.Index('chatpdf')
+    const pineconeIndex = pinecone.index('chatpdf-pro')
 
     // potential errors
     const vectorStore = await PineconeStore.fromExistingIndex(embeddings, {
@@ -65,7 +66,7 @@ export const POST = async (req: NextRequest) => {
     // debugging purposes
     // console.log('injecting prompt...')
 
-    const response = await openai.chat.completions.create({
+    const openai_response = await openai.chat.completions.create({
         model: "gpt-3.5-turbo-0125",
         temperature: 0,
         stream: true,
@@ -95,10 +96,12 @@ export const POST = async (req: NextRequest) => {
         ],
     });
 
+    const gemini_response = await genAI
+
     // console.log('closing prompt');
 
-    const stream = OpenAIStream(response, {
-        async onCompletion(completion) {
+    const stream = OpenAIStream(openai_response, {
+        async onCompletion(completion): Promise<void> {
             await db.message.create({
                 data: {
                     text: completion,
@@ -110,7 +113,7 @@ export const POST = async (req: NextRequest) => {
         }
     })
 
-    // console.log('returning stream...');
+    // const gemini_stream = GoogleGenerativeAIStream()
 
     return new StreamingTextResponse(stream)
 }

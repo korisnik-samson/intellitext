@@ -60,8 +60,7 @@ const ChatWrapper = ({ fileId, isSubscribed }: IChatWrapperProps) => {
                         {
                             isSubscribed ? PLANS.find((p) => p.name === 'Pro')?.pagesPerPDF
                             : PLANS.find((p) => p.name === 'Free')?.pagesPerPDF
-                        }{' '}
-                        pages per PDF.
+                        }{' '}pages per PDF.
                     </p>
                     <Link href='/dashboard' className={buttonVariants({ variant: 'secondary', className: 'mt-4' })}>
                         <ChevronLeft className='h-3 w-3 mr-1.5' />

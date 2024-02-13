@@ -132,7 +132,7 @@ const Page = async () => {
                                                 <ArrowRight className='h-5 w-5 ml-1.5' />
                                             </Link>
                                         ) : user ? (
-                                            <UpgradeButton />
+                                            <UpgradeButton isComingSoon={false} placeholder='Upgrade Now' />
                                         ) :  plan === 'Intelli' ? (
                                             /* TODO: Adjust Link function here when Intelli plan is ready */
                                             <Button variant='tertiary' aria-label='fullscreen' className='w-full'>
