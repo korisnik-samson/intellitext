@@ -133,7 +133,7 @@ const Page = async () => {
                                             </Link>
                                         ) : plan === 'Pro' && user ? (
                                             <UpgradeButton isComingSoon={false} placeholder='Upgrade Now' />
-                                        ) :  plan === 'Intelli' && user ? (
+                                        ) :  plan === 'Intelli' || user ? (
                                             /* TODO: Adjust Link function here when Intelli plan is ready */
                                             <Button variant='tertiary' aria-label='fullscreen' className='w-full'>
                                                 {'Coming Soon'}
