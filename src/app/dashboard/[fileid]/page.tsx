@@ -10,6 +10,7 @@ import { getUserSubscriptionPlan } from "@/lib/stripe";
 const Page = async ({ params }: IPageProps) => {
     // retrieve file id
     const { fileid } = params;
+
     const { getUser } = getKindeServerSession();
     const user = await getUser();
 

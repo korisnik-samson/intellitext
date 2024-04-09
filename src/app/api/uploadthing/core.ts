@@ -4,7 +4,8 @@ import { db } from "@/db";
 import { PDFLoader } from "langchain/document_loaders/fs/pdf";
 import { pinecone } from "@/lib/pinecone";
 import { OpenAIEmbeddings } from "@langchain/openai";
-import { PineconeStore } from "@langchain/community/vectorstores/pinecone";
+// import { PineconeStore } from "@langchain/community/vectorstores/pinecone";
+import { VectorStore } from "@langchain/core/vectorstores";
 import { getUserSubscriptionPlan } from "@/lib/stripe";
 import { PLANS } from "@/config/stripe";
 import { IOnUploadCompleteProps } from "@/types";
@@ -12,7 +13,7 @@ import { IOnUploadCompleteProps } from "@/types";
 const f = createUploadthing();
 
 export const middleware = async() => {
-    const {getUser} = getKindeServerSession();
+    const { getUser } = getKindeServerSession();
     const user = await getUser();
 
     if (!user || !user.id) throw new Error('Unauthorized');
@@ -66,13 +67,21 @@ const onUploadComplete = async({ metadata, file }: IOnUploadCompleteProps) => {
         }
 
         // vectorize and index the entire document
-        const pineconeIndex = pinecone.Index('chatpdf')
+        const pineconeIndex = pinecone.index('chatpdf-pro');
 
-        const embeddings = new OpenAIEmbeddings({
+        const embeddings= new OpenAIEmbeddings({
             openAIApiKey: process.env.OPENAI_API_TEST_KEY,
         });
 
+        // use the code below to create a new index as this is deprecated
+/*
         await PineconeStore.fromDocuments(pageLevelDocs, embeddings, {
+            pineconeIndex,
+            namespace: createdFile.id,
+        });
+*/
+
+        await VectorStore.fromDocuments(pageLevelDocs, embeddings, {
             pineconeIndex,
             namespace: createdFile.id,
         });
@@ -82,7 +91,7 @@ const onUploadComplete = async({ metadata, file }: IOnUploadCompleteProps) => {
             where: { id: createdFile.id }
         })
 
-    } catch (err) {
+    } catch (err: any) {
         await db.file.update({
             data: { uploadStatus: 'FAILED' },
             where: { id: createdFile.id }
@@ -91,11 +100,11 @@ const onUploadComplete = async({ metadata, file }: IOnUploadCompleteProps) => {
 }
 
 export const ourFileRouter = {
-    freePlanUploader: f({ pdf: { maxFileSize: '4MB' }})
+    freePlanUploader: f({ pdf: { maxFileSize: '16MB' } })
         .middleware(middleware)
         .onUploadComplete(onUploadComplete),
 
-    proPlanUploader: f({ pdf: { maxFileSize: '32MB' }})
+    proPlanUploader: f({ pdf: { maxFileSize: '32MB' } })
             .middleware(middleware)
             .onUploadComplete(onUploadComplete),
 } satisfies FileRouter;

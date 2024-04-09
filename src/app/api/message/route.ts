@@ -8,6 +8,17 @@ import { PineconeStore } from "@langchain/community/vectorstores/pinecone";
 import { openai } from "@/lib/openai";
 import { genAI } from "@/lib/gemini"
 import { OpenAIStream, GoogleGenerativeAIStream, StreamingTextResponse } from "ai";
+import { GenerativeModel } from "@google/generative-ai";
+
+const OpenAIChat = async (message: string, context: string) => {
+
+}
+
+const GoogleGenerativeAIChat = async (message: string, context: string) => {
+    const model = genAI.getGenerativeModel ({ model: 'embedding-001' });
+    const result = await model.embedContent (message);
+    const embedding = result.embedding;
+}
 
 export const POST = async (req: NextRequest) => {
     // endpoint for asking a question to a pdf file
@@ -23,10 +34,7 @@ export const POST = async (req: NextRequest) => {
 
     const { fileId, message } = SendMessageValidator.parse(body)
     const file = await db.file.findFirst({
-        where: {
-            id: fileId,
-            userId,
-        }
+        where: { id: fileId, userId, }
     });
 
     if (!file) return new Response('Not found', { status: 404 })
@@ -45,7 +53,7 @@ export const POST = async (req: NextRequest) => {
 
     const pineconeIndex = pinecone.index('chatpdf-pro')
 
-    // potential errors
+    // depricated
     const vectorStore = await PineconeStore.fromExistingIndex(embeddings, {
         pineconeIndex,
         namespace: file.id
@@ -63,10 +71,7 @@ export const POST = async (req: NextRequest) => {
         content: msg.text
     }));
 
-    // debugging purposes
-    // console.log('injecting prompt...')
-
-    const openai_response = await openai.chat.completions.create({
+    const openaiResponse = await openai.chat.completions.create({
         model: "gpt-3.5-turbo-0125",
         temperature: 0,
         stream: true,
@@ -96,11 +101,7 @@ export const POST = async (req: NextRequest) => {
         ],
     });
 
-    const gemini_response = await genAI
-
-    // console.log('closing prompt');
-
-    const stream = OpenAIStream(openai_response, {
+    const openaiStream = OpenAIStream(openaiResponse, {
         async onCompletion(completion): Promise<void> {
             await db.message.create({
                 data: {
@@ -111,9 +112,9 @@ export const POST = async (req: NextRequest) => {
                 }
             })
         }
-    })
+    });
 
-    // const gemini_stream = GoogleGenerativeAIStream()
+    //const geminiResponse = await GoogleGenerativeAIStream(chat.sendMessage(chat));
 
-    return new StreamingTextResponse(stream)
+    return new StreamingTextResponse(openaiStream)
 }
