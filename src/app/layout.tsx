@@ -6,6 +6,9 @@ import { cn, constructMetadata } from "@/lib/utils";
 import NavBar from "@/components/NavBar";
 import Providers from "@/components/Providers";
 
+import { GeistSans } from 'geist/font/sans';
+import { GeistMono } from 'geist/font/mono';
+
 import "react-loading-skeleton/dist/skeleton.css"
 import "simplebar-react/dist/simplebar.min.css"
 
@@ -20,7 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html lang="en">
             <Providers>
-                <body className={cn('min-h-screen font-sans antialiased grainy', inter.className)}>
+                <body className={cn('min-h-screen font-sans antialiased grainy', GeistSans.className)}>
                     <Toaster />
                     <NavBar />
                     {children}

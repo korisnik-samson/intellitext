@@ -6,19 +6,7 @@ import { OpenAIEmbeddings } from "@langchain/openai";
 import { pinecone } from "@/lib/pinecone";
 import { PineconeStore } from "@langchain/community/vectorstores/pinecone";
 import { openai } from "@/lib/openai";
-import { genAI } from "@/lib/gemini"
 import { OpenAIStream, GoogleGenerativeAIStream, StreamingTextResponse } from "ai";
-import { GenerativeModel } from "@google/generative-ai";
-
-const OpenAIChat = async (message: string, context: string) => {
-
-}
-
-const GoogleGenerativeAIChat = async (message: string, context: string) => {
-    const model = genAI.getGenerativeModel ({ model: 'embedding-001' });
-    const result = await model.embedContent (message);
-    const embedding = result.embedding;
-}
 
 export const POST = async (req: NextRequest) => {
     // endpoint for asking a question to a pdf file
@@ -72,7 +60,7 @@ export const POST = async (req: NextRequest) => {
     }));
 
     const openaiResponse = await openai.chat.completions.create({
-        model: "gpt-3.5-turbo-0125",
+        model: "gpt-4o",
         temperature: 0,
         stream: true,
         messages: [

@@ -16,7 +16,7 @@ export const middleware = async() => {
     const { getUser } = getKindeServerSession();
     const user = await getUser();
 
-    if (!user || !user.id) throw new Error('Unauthorized');
+    if (!user || !user.id) throw new Error('Unauthorized User');
 
     // subscription enforcement
     const subscriptionPlan = await getUserSubscriptionPlan()
@@ -107,6 +107,7 @@ export const ourFileRouter = {
     proPlanUploader: f({ pdf: { maxFileSize: '32MB' } })
             .middleware(middleware)
             .onUploadComplete(onUploadComplete),
+    
 } satisfies FileRouter;
 
 export type OurFileRouter = typeof ourFileRouter;
